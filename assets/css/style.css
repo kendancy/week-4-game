@@ -1,0 +1,78 @@
+<!-- style.css -->
+body {
+	background-attachment: url("assets/images/rock_1.png");
+	background-repeat: repeat-y;
+}
+*/
+div {
+	text-align: center;
+	/*width:30%;*/
+	background-color: grey;
+}
+
+.heading {
+	width:70%;
+	color: white;
+	background-color: orange;
+}
+
+#instructions {
+	width:70%;
+	padding: 40px;
+	border:40px;
+	margin:20px;
+	font-size: 20px;
+	background-color: pink;
+}
+
+#answer {
+	width:40%;
+	height:200px;
+	padding:0px 0px 100px 0px;
+	margin:20px;
+	text-align: left;
+	font-size:50px;
+	background-color: green;
+
+}
+
+#wins_losses {
+	width: 35%;
+	top: 10px;
+	left: 400px;
+	/*left: 200px;*/
+	/*height: 200px;*/
+	/*padding:20px 10px 20px 10px;*/
+	/*text-align: center;*/
+	font-size:30px;
+	/*margin:50px 10px 10px 10px*/
+	background-color: cyan;
+}
+
+.rock {
+	width:20%;
+	height:100px;
+	padding:0px 0px 50px 0px;
+	margin:20px 0px 0px 0px;
+	text-align: left;
+	font-size:50px;
+	background-color: white;
+}
+
+#total_score {
+	width: 40%;
+	color: white;
+	padding:10px 0px 10px 0px;
+	background-color: teal;
+}
+
+#score {
+	width: 40%;
+	color: white;
+	height:200px;
+	padding:10px 0px 10px 0px;
+	margin:20px;
+	text-align: left;
+	font-size: 50px;
+	background-color: teal;
+}

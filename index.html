@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Crystal Collectors Game!</title>
+
+	<!-- Bootstrap File -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  	<!-- JQuery -->
+  	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.js"></script>
+
+	<!-- My links -->
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <script type="text/javascript" src="assets/javascript/game.js"></script>
+</head>
+<body>
+	<div class="container">
+
+		<div class="jumbotron heading">
+			<h1><strong>Crystals Collector!</strong></h1>
+		</div>
+		
+		<div class="row_1">
+			<div class="col-md-12">
+			<section id="instructions">
+			<p>You will be given a random number at the start of the game.</p>
+			<br>
+			<p>There are four crytals below.  By cliking on a crystal you will add a specific amount of points to your total score.</p>
+			<br>
+			<p>You win the game by matching your total score to random number, you lose the game if your total score goes above the random number.</p>
+			<br>
+			<p>The value of each crystal is hidden from you until you click on it.</p>
+			<br>
+			<p>Each time when the game starts, the game will change the values of each crystal.</p>
+			</section>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6" id="answer">
+				<p>0</p>
+			</div>
+			<div class="col-md-6" id="wins_losses">
+				<p>Wins: 0</p>
+				<br>
+				<p>Losses: 0</p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="rock col-md-3" id="rock_1">
+				<!-- <a href="#" src="rock_1.jpg"> -->
+				<img src="assets/images/rock_1.png">
+				<!-- <p>0</p> -->
+			</div>
+			<div class="rock col-md-3" id="rock_2">
+				<!-- <a href="#" src="rock_1.jpg"> -->
+				<img src="assets/images/rock_2.png">
+				<!-- <p>0</p> -->
+			</div>
+			<div class="rock col-md-3" id="rock_3">
+				<!-- <a href="#" src="rock_1.jpg"> -->
+				<img src="assets/images/rock_3.png">
+				<!-- <p>0</p> -->
+			</div>
+			<div class="rock col-md-3" id="rock_4">
+				<!-- <a href="#" src="rock_1.jpg"> -->
+				<img src="assets/images/rock_4.png">
+				<!-- <p>0</p> -->
+			</div>
+		</div>
+
+		<div id="total_score">
+			<p>Your total score is:</p>
+		</div>
+
+		<div id="score">
+			<p>0</p>
+		</div>
+	</div>
+
+	<script>
+
+	$(document).ready(function() {
+
+		var wins = 0;
+		var losses = 0;
+		var answer;
+		var total_score;
+		var rock_1;
+		var rock_2;
+		var rock_3;
+		var rock_4;
+
+		// function start_game(){
+			// setup target amount goal
+			answer = Math.floor((120-19)*Math.random()+19);
+			$("#answer").html(answer);
+
+			total_score = 0;
+			$("#score").html(total_score);
+
+			// setup the values for the 4 gems
+			rock_1 = Math.floor((12-1)*Math.random()+1);
+			// $("#rock_1").html(rock_1);
+			rock_2 = Math.floor((12-1)*Math.random()+1);
+			while (rock_2 === rock_1) {
+				rock_2 = Math.floor((12-1)*Math.random()+1);
+			}
+			// $("#rock_2").html(rock_2);
+
+			rock_3 = Math.floor((12-1)*Math.random()+1);
+			while ((rock_3 === rock_1) || (rock_3 === rock_2)) {
+				rock_3 = Math.floor((12-1)*Math.random()+1);
+			}
+			// $("#rock_3").html(rock_3);
+
+			rock_4 = Math.floor((12-1)*Math.random()+1);
+			while ((rock_4 === rock_1) || (rock_4 === rock_2) || (rock_4 === rock_3)) {
+				rock_4 = Math.floor((12-1)*Math.random()+1);
+			}
+			// $("#rock_4").html(rock_4);
+			// return;
+		// };
+		
+		// start the game
+		// $("#answer").on("click", function(){
+		 	// var running = start_game();
+		// });
+	
+		// test for selection of gem
+		$("#rock_1").on("click", function()	{
+			total_score+=rock_1;
+			$("#score").html(total_score);
+		});
+
+		$("#rock_2").on("click", function()	{
+			total_score+=rock_2;
+			$("#score").html(total_score);
+		});
+
+		$("#rock_3").on("click", function()	{
+			total_score+=rock_3;
+			$("#score").html(total_score);
+		});
+
+		$("#rock_4").on("click", function()	{
+			total_score+=rock_4;
+			$("#score").html(total_score);
+		});
+
+		$(".rock").on("click", function()	{
+		if ( total_score > answer) {
+			losses++;
+			var wins_losses = "<p>Wins: "+wins+"</p><br>		<p>Losses: "+losses+"</p>";
+ 			$("#wins_losses").html(wins_losses);
+ 			// var running = start_game();
+		// function start_game(){
+			// setup target amount goal
+			answer = Math.floor((120-19)*Math.random()+19);
+			$("#answer").html(answer);
+
+			total_score = 0;
+			$("#score").html(total_score);
+
+			// setup the values for the 4 gems
+			rock_1 = Math.floor((12-1)*Math.random()+1);
+			// $("#rock_1").html(rock_1);
+			rock_2 = Math.floor((12-1)*Math.random()+1);
+			while (rock_2 === rock_1) {
+				rock_2 = Math.floor((12-1)*Math.random()+1);
+			}
+			// $("#rock_2").html(rock_2);
+
+			rock_3 = Math.floor((12-1)*Math.random()+1);
+			while ((rock_3 === rock_1) || (rock_3 === rock_2)) {
+				rock_3 = Math.floor((12-1)*Math.random()+1);
+			}
+			// $("#rock_3").html(rock_3);
+
+			rock_4 = Math.floor((12-1)*Math.random()+1);
+			while ((rock_4 === rock_1) || (rock_4 === rock_2) || (rock_4 === rock_3)) {
+				rock_4 = Math.floor((12-1)*Math.random()+1);
+			}
+			// $("#rock_4").html(rock_4);
+			// return;
+		// };
+
+		}	else if (total_score === answer) {
+			wins++
+			var wins_losses = "<p>Wins: "+wins+"</p><br>		<p>Losses: "+losses+"</p>";
+ 			$("#wins_losses").html(wins_losses);
+			// var running = start_game();
+// function start_game(){
+			// setup target amount goal
+			answer = Math.floor((120-19)*Math.random()+19);
+			$("#answer").html(answer);
+
+			total_score = 0;
+			$("#score").html(total_score);
+
+			// setup the values for the 4 gems
+			rock_1 = Math.floor((12-1)*Math.random()+1);
+			// $("#rock_1").html(rock_1);
+			rock_2 = Math.floor((12-1)*Math.random()+1);
+			while (rock_2 === rock_1) {
+				rock_2 = Math.floor((12-1)*Math.random()+1);
+			}
+			// $("#rock_2").html(rock_2);
+
+			rock_3 = Math.floor((12-1)*Math.random()+1);
+			while ((rock_3 === rock_1) || (rock_3 === rock_2)) {
+				rock_3 = Math.floor((12-1)*Math.random()+1);
+			}
+			// $("#rock_3").html(rock_3);
+
+			rock_4 = Math.floor((12-1)*Math.random()+1);
+			while ((rock_4 === rock_1) || (rock_4 === rock_2) || (rock_4 === rock_3)) {
+				rock_4 = Math.floor((12-1)*Math.random()+1);
+			}
+			// $("#rock_4").html(rock_4);
+			// return;
+		// };
+ 		}
+ 		});	
+ 	});
+
+	</script>
+</body>
+</html>
